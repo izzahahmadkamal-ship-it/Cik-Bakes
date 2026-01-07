@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cik Bakes - About</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="brand-name">Cik Bakes</div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="about.html" class="active">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="header-icons">
+            <button id="text-only-toggle" aria-label="Toggle Text Only Mode">Text Only</button>
+            <a href="login.html" id="login-icon" aria-label="Login"><i class="fas fa-user"></i></a>
+            <a href="cart.html" id="cart-icon" aria-label="Shopping Cart">🛒 (<span id="cart-count">0</span>)</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('Pics/cikbakes-hero-about.PNG') center/cover no-repeat;">
+        <h2>About Cik Bakes</h2>
+        <p>Delicious desserts, thoughtfully crafted and baked across our 2 physical stores.</p>
+    </section>
+
+    <!-- ABOUT CONTENT ZIG-ZAG -->
+    <section>
+
+        <!-- Box 1: Story -->
+        <div class="about-container" style="background:#fff; margin-bottom:2rem;">
+            <div class="about-text">
+                <h3>Our Story</h3>
+                <p>Cik Bakes operates two physical stores in Kelantan and has become a trusted brand, known for freshly baked treats made with care and attention to detail.</p>
+                <p>Our commitment to quality and innovation has made our desserts beloved by customers locally.</p>
+            </div>
+            <div class="about-image">
+                <img src="Pics/cikbakes-about.PNG" alt="Cik Bakes Bakery">
+            </div>
+        </div>
+
+        <!-- Box 2: Mission & Vision -->
+        <div class="about-container" style="background:#f9f9f9; margin-bottom:2rem;">
+            <div class="about-image">
+                <img src="Pics/cikbakes-hero-about.PNG" alt="Mission & Vision">
+            </div>
+            <div class="about-text">
+                <h3>Our Mission</h3>
+                <ul>
+                    <li>🍪 Produce delicious cookies and cakes with very unique taste</li>
+                    <li>✨ Focus on premium flavors to maintain imported-like taste</li>
+                    <li>🌟 Provide joyful experiences for customers enjoying our desserts</li>
+                </ul>
+                <h3 style="margin-top:1.5rem;">Our Vision</h3>
+                <p>To become a supplier of high-quality cookies and cakes with premium taste, and to create a brand that reaches international recognition.</p>
+            </div>
+        </div>
+
+        <!-- Box 3: Objectives -->
+        <div class="about-container" style="background:#fff; margin-bottom:2rem;">
+            <div class="about-text">
+                <h3>Our Objectives</h3>
+                <ul>
+                    <li>📈 Serve as a guideline for bakers while generating sustainable income</li>
+                    <li>🏆 Become a premium and well-known dessert shop in Malaysia</li>
+                    <li>🤝 Create job opportunities with fair and appropriate salaries</li>
+                    <li>🌍 Gain worldwide recognition through positive customer feedback</li>
+                </ul>
+            </div>
+            <div class="about-image">
+                <img src="Pics/cikbakes-gallery1.jpg" alt="Objectives">
+            </div>
+        </div>
+
+        <!-- Box 4: Commitment -->
+        <div class="about-container" style="background:#f9f9f9; margin-bottom:2rem;">
+            <div class="about-image">
+                <img src="Pics/cikbakes-hero-contact.PNG" alt="Commitment">
+            </div>
+            <div class="about-text">
+                <h3>Our Commitment</h3>
+                <p style="font-style: italic; color:#666;">
+                    At Cik Bakes, we always strive to maintain premium quality, consistency, and joy in every dessert we bake.
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; CikBakes Sdn Bhd. All Rights Reserved.</p>
+        <p>Website created on: 1 November 2025 | Last updated on: 7 January 2026</p>
+        <p>Product and review data collected between: December 2024 – December 2025</p>
+        <p id="visitor-time">Visitor: <span id="visitor-count">0</span><span id="current-time"></span></p>
+
+        <div class="social-icons">
+            <a href="https://www.wasap.my/601110592056" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/cikbakes_hq" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@cikbakes_hq" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="mailto:anisrosdan98@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script>
+        // CART
+        let cartCount = JSON.parse(localStorage.getItem("cart"))?.length || 0;
+        document.getElementById("cart-count").textContent = cartCount;
+
+        document.getElementById('cart-icon').onclick = function () {
+            window.location.href = 'cart.html';
+        };
+
+        // TEXT-ONLY TOGGLE
+        const textToggle = document.getElementById("text-only-toggle");
+        textToggle.addEventListener("click", () => {
+            document.body.classList.toggle("text-only");
+        });
+
+        // VISITOR COUNTER
+        let visitorCount = localStorage.getItem("visitorCount") || 0;
+        visitorCount++;
+        localStorage.setItem("visitorCount", visitorCount);
+        document.getElementById("visitor-count").textContent = visitorCount;
+
+        // REAL-TIME CLOCK
+        function updateTime() {
+            const now = new Date();
+            document.getElementById("current-time").textContent = " | " + now.toLocaleTimeString();
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+
+</body>
+</html>

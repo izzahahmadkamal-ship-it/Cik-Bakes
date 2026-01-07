@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cik Bakes – Menu</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* ================= DROPDOWN ================= */
+        .filter-dropdown {
+            text-align: center;
+            margin: 2rem 0 1rem 0;
+        }
+
+        .filter-dropdown select {
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            border: 1px solid #111;
+            font-weight: 600;
+            cursor: pointer;
+            background: #fff;
+            color: #111;
+            transition: 0.3s;
+        }
+
+        .filter-dropdown select:hover {
+            background: #eee;
+        }
+
+        /* Ensure each product stands alone */
+        .featured-products {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="brand-name">Cik Bakes</div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="header-icons">
+            <button id="text-only-toggle" aria-label="Toggle Text Only Mode">Text Only</button>
+            <a href="login.html" id="login-icon" aria-label="Login"><i class="fas fa-user"></i></a>
+            <a href="cart.html" id="cart-icon" aria-label="Shopping Cart">🛒 (<span id="cart-count">0</span>)</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero"
+        style="background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('Pics/cikbakes-hero-menu.PNG') center/cover no-repeat;">
+        <h2>Our Menu</h2>
+        <p>Discover all our freshly baked pastries, cakes, breads and desserts. Click “View” for more details.</p>
+    </section>
+
+    <!-- DROPDOWN FILTER -->
+    <div class="filter-dropdown">
+        <select id="categoryFilter">
+            <option value="all">All</option>
+            <option value="food">Food</option>
+            <option value="drinks">Drinks</option>
+            <option value="signature">Signature</option>
+        </select>
+    </div>
+
+    <!-- MENU GRID -->
+    <section class="featured-products">
+
+        <!-- SIGNATURE PRODUCTS -->
+        <div class="product-card" data-category="signature food">
+            <img src="Pics/cikbakes-product1.jpg" alt="Cake in Bowl">
+            <h3>Cake in Bowl</h3>
+            <p>Rich and creamy, served fresh in a bowl.</p>
+            <div class="buttons">
+                <a href="Product/product1.html" class="view-button">View</a>
+                <button onclick="addToCart()">Add</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="signature food">
+            <img src="Pics/cikbakes-product2.jpg" alt="Velvet Cheese Crunchy">
+            <h3>Velvet Cheese Crunchy</h3>
+            <p>Velvety soft cake.</p>
+            <div class="buttons">
+                <a href="Product/product2.html" class="view-button">View</a>
+                <button onclick="addToCart()">Add</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="signature food">
+            <img src="Pics/cikbakes-product3.jpg" alt="Pavlova">
+            <h3>Pavlova</h3>
+            <p>Crisp meringue with soft, airy center.</p>
+            <div class="buttons">
+                <a href="Product/product3.html" class="view-button">View</a>
+                <button onclick="addToCart()">Add</button>
+            </div>
+        </div>
+
+        <!-- FOOD PRODUCTS (including signature) -->
+        <div class="product-card" data-category="food">
+            <img src="Pics/cikbakes-product4.jpg" alt="Strawberry Chocolate Crunchy">
+            <h3>Strawberry Chocolate Crunchy</h3>
+            <p>Chocolatey layers with fresh strawberry.</p>
+            <div class="buttons">
+                <a href="Product/product4.html" class="view-button">View</a>
+                <button onclick="addToCart()">Add</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="food">
+            <img src="Pics/cikbakes-product5.jpg" alt="Pistacake in Bowl">
+            <h3>Pistacake in Bowl</h3>
+            <p>Creamy pistachio cake in a bowl.</p>
+            <div class="buttons">
+                <a href="Product/product5.html" class="view-button">View</a>
+                <button onclick="addToCart()">Add</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="food">
+            <img src="Pics/cikbakes-product7.jpg" alt="Mini Pancake">
+            <h3>Mini Pancake</h3>
+            <p>Fluffy mini pancakes, lightly sweet.</p>
+            <div class="buttons">
+                <a href="Product/product7.html" class="view-button">View</a>
+                <button onclick="addToCart()">Add</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="food">
+            <img src="Pics/cikbakes-product9.jpg" alt="Kek Batik Nutella Strawberry">
+            <h3>Kek Batik Nutella Strawberry</h3>
+            <p>Classic batik cake with Nutella & strawberry.</p>
+            <div class="buttons">
+                <a href="Product/product9.html" class="view-button">View</a>
+                <button onclick="addToCart()">Add</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="food">
+            <img src="Pics/cikbakes-product10.jpg" alt="Giant Donut x Callebaut Bueno">
+            <h3>Giant Donut x Callebaut Bueno</h3>
+            <p>Giant donut filled with Bueno chocolate.</p>
+            <div class="buttons">
+                <a href="Product/product10.html" class="view-button">View</a>
+                <button onclick="addToCart()">Add</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="food">
+            <img src="Pics/cikbakes-product12.jpg" alt="Burnt Cheesecake Nutella">
+            <h3>Burnt Cheesecake Nutella</h3>
+            <p>Burnt cheesecake swirled with Nutella.</p>
+            <div class="buttons">
+                <a href="Product/product12.html" class="view-button">View</a>
+                <button onclick="addToCart()">Add</button>
+            </div>
+        </div>
+
+        <!-- DRINKS PRODUCTS -->
+        <div class="product-card" data-category="drinks">
+            <img src="Pics/cikbakes-product6.jpg" alt="Brownies Cocoa Frappe">
+            <h3>Brownies Cocoa Frappe</h3>
+            <p>Chilled cocoa frappe with brownies.</p>
+            <div class="buttons">
+                <a href="Product/product6.html" class="view-button">View</a>
+                <button onclick="addToCart()">Add</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="drinks">
+            <img src="Pics/cikbakes-product8.jpg" alt="Mango Frappe">
+            <h3>Mango Frappe</h3>
+            <p>Refreshing mango frappe, creamy & icy.</p>
+            <div class="buttons">
+                <a href="Product/product8.html" class="view-button">View</a>
+                <button onclick="addToCart()">Add</button>
+            </div>
+        </div>
+
+        <div class="product-card" data-category="drinks">
+            <img src="Pics/cikbakes-product11.jpg" alt="Matcha Strawberry Ice">
+            <h3>Matcha Strawberry Ice</h3>
+            <p>Icy matcha with sweet strawberry.</p>
+            <div class="buttons">
+                <a href="Product/product11.html" class="view-button">View</a>
+                <button onclick="addToCart()">Add</button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FOOTER (from index.html) -->
+    <footer>
+        <p>&copy; CikBakes Sdn Bhd. All Rights Reserved.</p>
+        <p>Website created on: 1 November 2025 | Last updated on: 7 January 2026</p>
+        <p>Product and review data collected between: December 2024 – December 2025</p>
+
+        <!-- Visitor & Time -->
+        <p id="visitor-time">Visitor: <span id="visitor-count">0</span><span id="current-time"></span></p>
+
+        <div class="social-icons">
+            <a href="https://www.wasap.my/601110592056" target="_blank" title="WhatsApp"><i
+                    class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/cikbakes_hq?igsh=eGV5cWxrOGtrOGI4" target="_blank" title="Instagram"><i
+                    class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@cikbakes_hq?_r=1&_t=ZS-92o6VVfnlE0" target="_blank" title="TikTok"><i
+                    class="fab fa-tiktok"></i></a>
+            <a href="mailto:anisrosdan98@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script>
+        // CART
+        let cartCount = 0;
+        function addToCart() {
+            cartCount++;
+            document.getElementById("cart-count").textContent = cartCount;
+        }
+
+        // TEXT-ONLY TOGGLE
+        const textToggle = document.getElementById("text-only-toggle");
+        textToggle.addEventListener("click", () => {
+            document.body.classList.toggle("text-only");
+        });
+
+        // VISITOR COUNTER
+        let visitorCount = localStorage.getItem("visitorCount") || 0;
+        visitorCount++;
+        localStorage.setItem("visitorCount", visitorCount);
+        document.getElementById("visitor-count").textContent = visitorCount;
+
+        // REAL-TIME CLOCK
+        function updateTime() {
+            const now = new Date();
+            document.getElementById("current-time").textContent = now.toLocaleTimeString();
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // DROPDOWN FILTER
+        const filterSelect = document.getElementById("categoryFilter");
+        const products = document.querySelectorAll(".product-card");
+
+        filterSelect.addEventListener("change", () => {
+            const category = filterSelect.value;
+
+            products.forEach(product => {
+                if (category === "all") {
+                    product.style.display = "block";
+                } else if (category === "food" && product.dataset.category.includes("food")) {
+                    product.style.display = "block";
+                } else if (category === "drinks" && product.dataset.category.includes("drinks")) {
+                    product.style.display = "block";
+                } else if (category === "signature" && product.dataset.category.includes("signature")) {
+                    product.style.display = "block";
+                } else {
+                    product.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

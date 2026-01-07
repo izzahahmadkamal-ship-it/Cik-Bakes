@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cik Bakes</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="brand-name">Cik Bakes</div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="header-icons">
+            <button id="text-only-toggle" aria-label="Toggle Text Only Mode">Text Only</button>
+            <a href="login.html" id="login-icon" aria-label="Login"><i class="fas fa-user"></i></a>
+            <a href="cart.html" id="cart-icon" aria-label="Shopping Cart">🛒 (<span id="cart-count">0</span>)</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('Pics/cikbakes-hero.PNG') center/cover no-repeat;">
+        <h2>Homemade Desserts, Baked with Love</h2>
+        <p>At Cik Bakes, every dessert is carefully prepared to bring comfort, sweetness and joy to every customer.</p>
+        <a href="menu.html" class="button">Explore Menu</a>
+    </section>
+
+    <!-- ABOUT -->
+    <section>
+        <h2>About CikBakes</h2>
+        <div class="about-container">
+            <div class="about-text">
+                <p>CikBakes started as a home-based bakery located in Kelantan, specialising in freshly baked desserts made to order.</p>
+                <p>Our process:</p>
+                <ol>
+                    <li>Select the finest ingredients.</li>
+                    <li>Handcraft each dessert with care.</li>
+                    <li>Deliver happiness to every customer.</li>
+                </ol>
+                <a href="about.html" class="button-outline">Learn More</a>
+            </div>
+            <div class="about-image">
+                <img src="Pics/cikbakes-about.PNG" alt="About Cik Bakes">
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED -->
+    <section>
+        <h2>Popular Picks</h2>
+        <div class="featured-products">
+            <div class="product-card">
+                <img src="Pics/cikbakes-product1.jpg" alt="Cake in Bowl">
+                <h3>Cake in Bowl</h3>
+                <p>Rich and creamy, served fresh in a bowl</p>
+                <div class="buttons">
+                    <a href="Product/product1.html" class="view-button">View</a>
+                    <button onclick="addToCart()">Add</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="Pics/cikbakes-product2.jpg" alt="Velvet Cheese Crunchy">
+                <h3>Velvet Cheese Crunchy</h3>
+                <p>Velvety soft cake</p>
+                <div class="buttons">
+                    <a href="Product/product2.html" class="view-button">View</a>
+                    <button onclick="addToCart()">Add</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="Pics/cikbakes-product3.jpg" alt="Pavlova">
+                <h3>Pavlova</h3>
+                <p>Crisp meringue with soft, airy center.</p>
+                <div class="buttons">
+                    <a href="Product/product3.html" class="view-button">View</a>
+                    <button onclick="addToCart()">Add</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section>
+        <h2>Customer Reviews</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Very fresh and delicious!"</p>
+                <h4>- Aina</h4>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Packaging and taste are excellent."</p>
+                <h4>- Daniel</h4>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Will definitely order again."</p>
+                <h4>- Farah</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section>
+        <h2>Our Gallery</h2>
+        <div class="gallery-container">
+            <img src="Pics/cikbakes-gallery1.jpg" alt="Gallery Image">
+            <video autoplay muted loop playsinline>
+                <source src="Pics/cikbakes-gallery2.mp4" type="video/mp4">
+            </video>
+            <img src="Pics/cikbakes-gallery3.jpg" alt="Gallery Image">
+            <video autoplay muted loop playsinline>
+                <source src="Pics/cikbakes-gallery4.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
+
+    <!-- LOCATION -->
+    <section>
+        <h2>Visit Us</h2>
+        <div class="operation-hours">
+            <h3>Operating Hours</h3>
+            <p>Open Daily: 10.00 AM – 10.00 PM<br><br>
+                <strong>Friday Break</strong><br>
+                Closed from 1.00 PM – 2.30 PM<br>
+                (Friday Prayer)
+            </p>
+        </div>
+        <p style="text-align:center;">
+            12134B Kampung Setek Koklanas, Ketereh,<br>
+            16450 Kota Bharu, Kelantan
+        </p>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps?q=12134B%20Kampung%20Setek%20Koklanas%20Ketereh%2016450%20Kota%20Bharu%20Kelantan&output=embed"></iframe>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; CikBakes Sdn Bhd. All Rights Reserved.</p>
+        <p>Website created on: 1 November 2025 | Last updated on: 7 January 2026</p>
+        <p>Product and review data collected between: December 2024 – December 2025</p>
+
+        <!-- Visitor & Time -->
+        <p id="visitor-time">Visitor: <span id="visitor-count">0</span><span id="current-time"></span></p>
+
+        <div class="social-icons">
+            <a href="https://www.wasap.my/601110592056" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/cikbakes_hq?igsh=eGV5cWxrOGtrOGI4" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@cikbakes_hq?_r=1&_t=ZS-92o6VVfnlE0" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="mailto:anisrosdan98@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script>
+        // CART
+        let cartCount = 0;
+        function addToCart() {
+            cartCount++;
+            document.getElementById("cart-count").textContent = cartCount;
+        }
+
+        // TEXT-ONLY TOGGLE
+        const textToggle = document.getElementById("text-only-toggle");
+        textToggle.addEventListener("click", () => {
+            document.body.classList.toggle("text-only");
+        });
+
+        // VISITOR COUNTER
+        let visitorCount = localStorage.getItem("visitorCount") || 0;
+        visitorCount++;
+        localStorage.setItem("visitorCount", visitorCount);
+        document.getElementById("visitor-count").textContent = visitorCount;
+
+        // REAL-TIME CLOCK
+        function updateTime() {
+            const now = new Date();
+            document.getElementById("current-time").textContent = now.toLocaleTimeString();
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>

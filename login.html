@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cik Bakes - Login</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- External CSS -->
+<link rel="stylesheet" href="styles.css">
+
+<style>
+/* ================= LOGIN FORM ================= */
+.login-container {
+    max-width: 400px;
+    margin: 4rem auto 6rem auto;
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.1);
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #111;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 25px;
+    background: #111;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-container button:hover {
+    opacity: .85;
+}
+
+.login-links {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.login-links a {
+    color: #111;
+    margin: 0 5px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.login-links a:hover {
+    color: #555;
+}
+
+/* ================= MODAL ================= */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto; 
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+.modal-content h3 {
+    margin-bottom: 1.5rem;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 25px;
+    background: #111;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    opacity: .85;
+}
+
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #111;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="brand-name">Cik Bakes</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="header-icons">
+        <button id="text-only-toggle" aria-label="Toggle Text Only Mode">Text Only</button>
+        <a href="login.html" id="login-icon" aria-label="Login"><i class="fas fa-user"></i></a>
+        <a href="cart.html" id="cart-icon" aria-label="Shopping Cart">🛒 (<span id="cart-count">0</span>)</a>
+    </div>
+</header>
+
+<!-- LOGIN FORM -->
+<div class="login-container">
+    <h2>Login</h2>
+    <input type="email" id="loginEmail" placeholder="Email">
+    <input type="password" id="loginPassword" placeholder="Password">
+    <button onclick="loginUser()">Login</button>
+
+    <div class="login-links">
+        <a onclick="openModal('forgotModal')">Forgot Password?</a> | 
+        <a onclick="openModal('createModal')">Create Account</a>
+    </div>
+</div>
+
+<!-- FORGOT PASSWORD MODAL -->
+<div id="forgotModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('forgotModal')">&times;</span>
+        <h3>Forgot Password</h3>
+        <input type="email" id="forgotEmail" placeholder="Enter your email">
+        <button onclick="simulateForgot()">Send Reset Link</button>
+    </div>
+</div>
+
+<!-- CREATE ACCOUNT MODAL -->
+<div id="createModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal('createModal')">&times;</span>
+        <h3>Create Account</h3>
+        <input type="text" id="createName" placeholder="Your Name">
+        <input type="email" id="createEmail" placeholder="Your Email">
+        <input type="password" id="createPassword" placeholder="Password">
+        <button onclick="simulateCreate()">Register</button>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; CikBakes Sdn Bhd. All Rights Reserved.</p>
+    <p>Website created on: 1 November 2025 | Last updated on: 7 January 2026</p>
+    <p>Product and review data collected between: December 2024 – December 2025</p>
+
+    <p id="visitor-time">Visitor: <span id="visitor-count">0</span><span id="current-time"></span></p>
+
+    <div class="social-icons">
+        <a href="https://www.wasap.my/601110592056" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/cikbakes_hq?igsh=eGV5cWxrOGtrOGI4" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@cikbakes_hq?_r=1&_t=ZS-92o6VVfnlE0" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="mailto:anisrosdan98@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+</footer>
+
+<script>
+// TEXT-ONLY TOGGLE
+const textToggle = document.getElementById("text-only-toggle");
+textToggle.addEventListener("click", () => {
+    document.body.classList.toggle("text-only");
+});
+
+// VISITOR COUNTER
+let visitorCount = localStorage.getItem("visitorCount") || 0;
+visitorCount++;
+localStorage.setItem("visitorCount", visitorCount);
+document.getElementById("visitor-count").textContent = visitorCount;
+
+// REAL-TIME CLOCK
+function updateTime() {
+    const now = new Date();
+    document.getElementById("current-time").textContent = now.toLocaleTimeString();
+}
+setInterval(updateTime, 1000);
+updateTime();
+
+// MODAL FUNCTIONS
+function openModal(id){
+    document.getElementById(id).style.display = 'block';
+}
+
+function closeModal(id){
+    document.getElementById(id).style.display = 'none';
+}
+
+window.onclick = function(event){
+    if(event.target.classList.contains('modal')){
+        event.target.style.display = 'none';
+    }
+}
+
+// SIMULATE LOGIN
+function loginUser(){
+    const email = document.getElementById('loginEmail').value;
+    if(email){
+        alert('Simulated: Logged in as ' + email);
+    } else {
+        alert('Please enter your email.');
+    }
+}
+
+// SIMULATE FORGOT PASSWORD
+function simulateForgot(){
+    const email = document.getElementById('forgotEmail').value;
+    if(email){
+        alert('Password reset link sent to ' + email);
+        closeModal('forgotModal');
+    } else {
+        alert('Please enter your email.');
+    }
+}
+
+// SIMULATE CREATE ACCOUNT
+function simulateCreate(){
+    const name = document.getElementById('createName').value;
+    const email = document.getElementById('createEmail').value;
+    if(name && email){
+        alert(`Account created for ${name} (${email})`);
+        closeModal('createModal');
+    } else {
+        alert('Please fill in all fields.');
+    }
+}
+</script>
+</body>
+</html>
