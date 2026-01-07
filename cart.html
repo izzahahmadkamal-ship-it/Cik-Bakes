@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cik Bakes - Cart</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- External CSS -->
+<link rel="stylesheet" href="styles.css">
+
+<style>
+/* ================= CART SPECIFIC ================= */
+.cart-wrapper {
+    max-width: 1000px;
+    margin: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 14px;
+    text-align: center;
+}
+
+th {
+    background: #111;
+    color: #fff;
+}
+
+td {
+    color: #444;
+}
+
+.qty-btn {
+    background: #111;
+    color: #fff;
+    border: none;
+    padding: 4px 10px;
+    margin: 0 4px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.remove-btn {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.total-box {
+    text-align: right;
+    margin-top: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.checkout-box {
+    text-align: right;
+    margin-top: 1.5rem;
+}
+
+.checkout-btn {
+    background: #111;
+    color: #fff;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.checkout-btn:hover {
+    opacity: .85;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    th, td {
+        font-size: .9rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <div class="brand-name">Cik Bakes</div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="header-icons">
+        <button id="text-only-toggle" aria-label="Toggle Text Only Mode">Text Only</button>
+        <a href="login.html" id="login-icon" aria-label="Login"><i class="fas fa-user"></i></a>
+        <a href="cart.html" id="cart-icon">🛒 (<span id="cart-count">0</span>)</a>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('Pics/cikbakes-hero-cart.PNG') center/cover no-repeat;">
+    <h2>Your Cart</h2>
+    <p>Review your selected items before checkout.</p>
+</section>
+
+<!-- CART CONTENT -->
+<section>
+    <div class="cart-wrapper">
+        <table id="cartTable">
+            <tr>
+                <th>Item</th>
+                <th>Price (RM)</th>
+                <th>Quantity</th>
+                <th>Total (RM)</th>
+                <th>Action</th>
+            </tr>
+        </table>
+
+        <div class="total-box">
+            Grand Total: RM <span id="grandTotal">0.00</span>
+        </div>
+
+        <div class="checkout-box">
+            <button class="checkout-btn" onclick="proceedCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; CikBakes Sdn Bhd. All Rights Reserved.</p>
+    <p>Website created on: 1 November 2025 | Last updated on: 7 January 2026</p>
+    <p>Product and review data collected between: December 2024 – December 2025</p>
+
+    <!-- Visitor & Time -->
+    <p id="visitor-time">
+        Visitor: <span id="visitor-count">0</span>
+        <span class="time-seperator">|</span>
+        <span id="current-time"></span>
+    </p>
+
+
+    <div class="social-icons">
+        <a href="https://www.wasap.my/601110592056" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/cikbakes_hq?igsh=eGV5cWxrOGtrOGI4" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@cikbakes_hq?_r=1&_t=ZS-92o6VVfnlE0" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="mailto:anisrosdan98@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+</footer>
+
+<script>
+// CART DATA
+let cart = [
+    { name: "Cake in Bowl", price: 29.90, qty: 1 },
+    { name: "Matcha Strawberry Ice", price: 14.00, qty: 2 }
+];
+
+// UPDATE CART UI
+function updateCart() {
+    const table = document.getElementById("cartTable");
+
+    table.innerHTML = `
+        <tr>
+            <th>Item</th>
+            <th>Price (RM)</th>
+            <th>Quantity</th>
+            <th>Total (RM)</th>
+            <th>Action</th>
+        </tr>
+    `;
+
+    let total = 0;
+
+    cart.forEach((item, index) => {
+        const row = table.insertRow();
+        row.innerHTML = `
+            <td>${item.name}</td>
+            <td>${item.price.toFixed(2)}</td>
+            <td>
+                <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+                ${item.qty}
+                <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+            </td>
+            <td>${(item.price * item.qty).toFixed(2)}</td>
+            <td>
+                <button class="remove-btn" onclick="removeItem(${index})">Remove</button>
+            </td>
+        `;
+        total += item.price * item.qty;
+    });
+
+    document.getElementById("grandTotal").textContent = total.toFixed(2);
+    document.getElementById("cart-count").textContent = cart.length;
+}
+
+// CHANGE QUANTITY
+function changeQty(index, amount) {
+    cart[index].qty += amount;
+    if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+    }
+    updateCart();
+}
+
+// REMOVE ITEM
+function removeItem(index) {
+    cart.splice(index, 1);
+    updateCart();
+}
+
+// CHECKOUT
+function proceedCheckout() {
+    if(cart.length === 0){
+        alert("Your cart is empty!");
+        return;
+    }
+
+    let message = "You have successfully checked out:\n\n";
+    cart.forEach(item => {
+        message += `${item.qty} x ${item.name} (RM${item.price.toFixed(2)})\n`;
+    });
+    message += `\nGrand Total: RM${cart.reduce((acc, i) => acc + i.price*i.qty, 0).toFixed(2)}`;
+
+    alert(message);
+
+    cart = [];
+    updateCart();
+}
+
+// INITIALIZE
+updateCart();
+
+// TEXT-ONLY TOGGLE
+const textToggle = document.getElementById("text-only-toggle");
+textToggle.addEventListener("click", () => {
+    document.body.classList.toggle("text-only");
+});
+
+// VISITOR COUNTER & TIME
+let visitorCount = localStorage.getItem("visitorCount") || 0;
+visitorCount++;
+localStorage.setItem("visitorCount", visitorCount);
+document.getElementById("visitor-count").textContent = visitorCount;
+
+function updateTime() {
+    const now = new Date();
+    document.getElementById("current-time").textContent = now.toLocaleTimeString();
+}
+setInterval(updateTime, 1000);
+updateTime();
+</script>
+
+</body>
+</html>

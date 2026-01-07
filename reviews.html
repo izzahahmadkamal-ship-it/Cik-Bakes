@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cik Bakes - Reviews</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* ================= REVIEWS GRID ================= */
+        .reviews-grid {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .review-card {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            position: relative;
+        }
+
+        .review-card p {
+            color: #555;
+            margin: 0.5rem 0;
+        }
+
+        .review-card h4 {
+            margin-top: 0.5rem;
+            font-weight: 600;
+            color: #111;
+        }
+
+        .stars {
+            color: gold;
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* ================= ADD REVIEW FORM ================= */
+        .add-review {
+            max-width: 600px;
+            margin: 4rem auto;
+            text-align: center;
+        }
+
+        .add-review input,
+        .add-review textarea,
+        .add-review select {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px solid #ccc;
+            margin-bottom: 1rem;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .add-review button {
+            background: #111;
+            color: #fff;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .add-review button:hover {
+            background: #333;
+        }
+
+        /* Google Reviews Widget spacing */
+        .elfsight-app-9213ddaa-e474-4ff8-9a07-0c950d4a3044 {
+            max-width: 1100px;
+            margin: 2rem auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="brand-name">Cik Bakes</div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="header-icons">
+            <button id="text-only-toggle" aria-label="Toggle Text Only Mode">Text Only</button>
+            <a href="login.html" id="login-icon" aria-label="Login"><i class="fas fa-user"></i></a>
+            <a href="cart.html" id="cart-icon" aria-label="Shopping Cart">🛒 (<span id="cart-count">0</span>)</a>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" style="background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('Pics/cikbakes-product1.jpg') center/cover no-repeat;">
+        <h2>Customer Reviews</h2>
+        <p>See what our happy customers have to say about our freshly baked desserts!</p>
+    </section>
+
+    <!-- MANUAL REVIEWS GRID -->
+    <section>
+        <h2>Customer Reviews</h2>
+        <div class="reviews-grid" id="reviews-grid">
+            <div class="review-card"><div class="stars">★★★★★</div><p>"Absolutely love the chocolate cake! So moist and rich."</p><h4>- Sarah L.</h4></div>
+            <div class="review-card"><div class="stars">★★★★★</div><p>"Best croissants ever! Flaky and buttery perfection."</p><h4>- Amir H.</h4></div>
+            <div class="review-card"><div class="stars">★★★★☆</div><p>"Sourdough loaf is fantastic, great crust and tangy flavor."</p><h4>- Mei F.</h4></div>
+            <div class="review-card"><div class="stars">★★★★★</div><p>"Tiramisu was so creamy, just perfect."</p><h4>- Daniel K.</h4></div>
+            <div class="review-card"><div class="stars">★★★★☆</div><p>"Cupcakes were moist and delicious."</p><h4>- Lisa M.</h4></div>
+            <div class="review-card"><div class="stars">★★★★★</div><p>"Cookies were perfect, chewy center and crispy edges."</p><h4>- Yusuf R.</h4></div>
+            <div class="review-card"><div class="stars">★★★★☆</div><p>"Mango cheesecake was creamy and fruity."</p><h4>- Hana S.</h4></div>
+            <div class="review-card"><div class="stars">★★★★★</div><p>"Brownies were rich and fudgy, loved it!"</p><h4>- Adam L.</h4></div>
+            <div class="review-card"><div class="stars">★★★★☆</div><p>"Cheesecake was smooth and delightful."</p><h4>- Noor A.</h4></div>
+            <div class="review-card"><div class="stars">★★★★★</div><p>"Perfect eclairs, custard was creamy and sweet."</p><h4>- Farid Z.</h4></div>
+            <div class="review-card"><div class="stars">★★★★★</div><p>"Lemon tart was zesty and fresh."</p><h4>- Sarah T.</h4></div>
+            <div class="review-card"><div class="stars">★★★★☆</div><p>"Chocolate chip muffins were soft and fluffy."</p><h4>- Jason W.</h4></div>
+        </div>
+    </section>
+
+    <!-- GOOGLE REVIEWS WIDGET -->
+    <section>
+        <h2>Live Google Reviews</h2>
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+        <div class="elfsight-app-9213ddaa-e474-4ff8-9a07-0c950d4a3044" data-elfsight-app-lazy></div>
+    </section>
+
+    <!-- ADD REVIEW FORM -->
+    <section class="add-review">
+        <h2>Leave a Review</h2>
+        <form id="review-form">
+            <input type="text" id="reviewer-name" placeholder="Your Name" required>
+            <textarea id="review-text" placeholder="Your Review" rows="4" required></textarea>
+
+            <div class="star-select">
+                <label>Rating: </label>
+                <select id="review-stars" required>
+                    <option value="1">★☆☆☆☆</option>
+                    <option value="2">★★☆☆☆</option>
+                    <option value="3">★★★☆☆</option>
+                    <option value="4">★★★★☆</option>
+                    <option value="5">★★★★★</option>
+                </select>
+            </div>
+
+            <button type="submit">Submit Review</button>
+        </form>
+        <p id="review-message" style="color:#111; margin-top:1rem;"></p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; CikBakes Sdn Bhd. All Rights Reserved.</p>
+        <p>Website created on: 1 November 2025 | Last updated on: 7 January 2026</p>
+        <p>Product and review data collected between: December 2024 – December 2025</p>
+
+        <!-- Visitor & Time -->
+        <p id="visitor-time">
+            Visitor: <span id="visitor-count">0</span>
+            <span class="time-seperator">|</span>
+            <span id="current-time"></span>
+        </p>
+
+
+        <div class="social-icons">
+            <a href="https://www.wasap.my/601110592056" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/cikbakes_hq?igsh=eGV5cWxrOGtrOGI4" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@cikbakes_hq?_r=1&_t=ZS-92o6VVfnlE0" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="mailto:anisrosdan98@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // CART
+        let cartCount = 0;
+        function addToCart() {
+            cartCount++;
+            document.getElementById("cart-count").textContent = cartCount;
+        }
+
+        document.getElementById("cart-icon").onclick = function () {
+            window.location.href = "cart.html";
+        };
+
+        // TEXT-ONLY TOGGLE
+        const textToggle = document.getElementById("text-only-toggle");
+        textToggle.addEventListener("click", () => {
+            document.body.classList.toggle("text-only");
+        });
+
+        // VISITOR COUNTER
+        let visitorCount = localStorage.getItem("visitorCount") || 0;
+        visitorCount++;
+        localStorage.setItem("visitorCount", visitorCount);
+        document.getElementById("visitor-count").textContent = visitorCount;
+
+        // REAL-TIME CLOCK
+        function updateTime() {
+            const now = new Date();
+            document.getElementById("current-time").textContent = now.toLocaleTimeString();
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // ADD REVIEW FORM
+        document.getElementById('review-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('reviewer-name').value.trim();
+            const text = document.getElementById('review-text').value.trim();
+            const stars = document.getElementById('review-stars').value;
+
+            if (!name || !text || !stars) return;
+
+            const grid = document.getElementById('reviews-grid');
+            const newCard = document.createElement('div');
+            newCard.classList.add('review-card');
+            newCard.innerHTML = `
+                <div class="stars">${'★'.repeat(stars)}${'☆'.repeat(5 - stars)}</div>
+                <p>"${text}"</p>
+                <h4>- ${name}</h4>
+            `;
+            grid.appendChild(newCard);
+
+            document.getElementById('reviewer-name').value = '';
+            document.getElementById('review-text').value = '';
+            document.getElementById('review-stars').value = '';
+            document.getElementById('review-message').textContent = "Thank you for your review!";
+        });
+    </script>
+
+</body>
+
+</html>
